@@ -1,11 +1,11 @@
 import psycopg2
 import os
 
-db_name = "postgres"
-db_user = "postgres"
-db_password = "postgres666"
-db_host = "localhost"
-db_port = "5432"
+db_name = os.environ.get("DB_NAME")
+db_user = os.environ.get("DB_USER")
+db_password = os.environ.get("DB_PASSWORD")
+db_host = os.environ.get("DB_HOST")
+db_port = os.environ.get("DB_PORT")
 
 """Загрузка SQL-запроса из файла"""
 def load_sql_query(file_path):
@@ -123,7 +123,7 @@ def main():
                 for row in results_category_rental_duration:
                     category_name, total_hours = row
                     print(f"Category: {category_name}, Rental hours: {total_hours}")
-    conn.close()
+        conn.close()
 
 if __name__ == "__main__":
     main()
